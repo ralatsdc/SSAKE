@@ -221,7 +221,7 @@ DATE=`date`
 echo -----------------------------------------------------------------------------------
 echo ${DATE} : Computing stats from ${BASENAME}_scaffolds.fa
 echo -----------------------------------------------------------------------------------
-getStats.pl ${BASENAME}_scaffolds.fa > ${BASENAME}_scaffolds.stats.txt
+getStats.pl ${BASENAME}_scaffolds.fa > ${BASENAME}_scaffolds_stats.txt
 DATE=`date`
 echo -----------------------------------------------------------------------------------
 echo ${DATE} : assembly pipeline complete. Results are under ${BASENAME}.
