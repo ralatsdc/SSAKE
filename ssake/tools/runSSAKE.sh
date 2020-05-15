@@ -187,6 +187,11 @@ echo ${READ1FQ}
 echo ${READ2FQ} 
 echo target fragment length = ${LFRAGLEN} bp
 echo basename for assembly : ${BASENAME}
+rm -rf ${BASENAME}/* &> /dev/null
+mkdir -p ${BASENAME}
+pushd ${BASENAME} &> /dev/null
+ln -s "../${READ1FQ}" ${READ1FQ}
+ln -s "../${READ2FQ}" ${READ2FQ}
 DATE=`date`
 echo -----------------------------------------------------------------------------------
 echo ${DATE} : Trimming low quality bases, be patient...
@@ -222,6 +227,7 @@ echo ---------------------------------------------------------------------------
 echo ${DATE} : Computing stats from ${BASENAME}_scaffolds.fa
 echo -----------------------------------------------------------------------------------
 getStats.pl ${BASENAME}_scaffolds.fa > ${BASENAME}_scaffolds_stats.txt
+popd &> /dev/null
 DATE=`date`
 echo -----------------------------------------------------------------------------------
 echo ${DATE} : assembly pipeline complete. Results are under ${BASENAME}.
