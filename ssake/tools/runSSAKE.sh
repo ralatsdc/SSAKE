@@ -106,7 +106,7 @@ K_ARG=0
 Z_ARG=100
 Q_ARG=0
 V_ARG=0
-while getopts "x:n:d:vw:m:o:r:tcykz:qph" opt; do
+while getopts "x:n:d:w:m:o:r:t:c:y:k:z:q:v:h" opt; do
     case $opt in
         x)
 	    X_ARG=$OPTARG
@@ -130,25 +130,25 @@ while getopts "x:n:d:vw:m:o:r:tcykz:qph" opt; do
             R_ARG=$OPTARG
             ;;
         t)
-            T_ARG=1
+            T_ARG=$OPTARG
             ;;
         c)
-            C_ARG=1
+            C_ARG=$OPTARG
             ;;
         y)
-            Y_ARG=1
+            Y_ARG=$OPTARG
             ;;
         k)
-            K_ARG=1
+            K_ARG=$OPTARG
             ;;
         z)
             Z_ARG=$OPTARG
             ;;
         q)
-            Q_ARG=1
+            Q_ARG=$OPTARG
             ;;
         v)
-            V_ARG=1
+            V_ARG=$OPTARG
             ;;
         h)
 	    usage
@@ -168,6 +168,7 @@ while getopts "x:n:d:vw:m:o:r:tcykz:qph" opt; do
 done
 
 # Assign command line arguments
+shift `expr $OPTIND - 1`
 if [ "$1" == "" ] || [ "$2" == "" ] || [ "$3" == "" ] || [ "$4" == "" ]; then
     usage
     exit 1
